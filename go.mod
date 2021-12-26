@@ -1,4 +1,4 @@
-module github.com/olliefr/docker-gs-ping
+module github.com/allensg/codingProblems
 
 go 1.16
 
@@ -6,6 +6,7 @@ require (
 	github.com/Microsoft/go-winio v0.5.0 // indirect
 	github.com/cenkalti/backoff v2.0.0+incompatible // indirect
 	github.com/containerd/continuity v0.1.0 // indirect
+	github.com/gin-gonic/gin v1.7.7
 	github.com/gotestyourself/gotestyourself v1.3.0 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
 	github.com/labstack/echo/v4 v4.2.2

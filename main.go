@@ -4,10 +4,12 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/allensg/codingProblems/problems"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
+// "github.com/allensg/codingProblems/problems"
 func main() {
 
 	e := echo.New()
@@ -15,8 +17,15 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	envVars := make(map[string]string)
+	// Initialize handler
+	problems := &problems.Handler{
+		Env: envVars,
+	}
+
 	e.GET("/", func(c echo.Context) error {
-		return c.HTML(http.StatusOK, "Hello, Docker! <3")
+		// return c.HTML(http.StatusOK, "Hello, Docker! <3")
+		return problems.PythagTripples(c)
 	})
 
 	e.GET("/ping", func(c echo.Context) error {

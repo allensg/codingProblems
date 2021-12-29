@@ -14,7 +14,7 @@ func (h *Handler) Staircase(logger echo.Context) {
 	// looks like this is a fibbonaci problem so its just what is the fib. sequence at N stairs
 	// so for inputs: 0 | 1 | 2 | 3 | 4 | 5 | 6 |  7 |  8 |  9 | 10 | 11 |  12 |  13 |  14 |...
 	// we should see: 0 | 1 | 1 | 2 | 3 | 5 | 8 | 13 | 21 | 34 | 55 | 89 | 144 | 233 | 377 |...
-	inputSteps, answer := 2, 0
+	inputSteps, answer := 14, 0
 
 	// recursion would work but would be runtime O(n^2)
 	// answer = StaircaseRec(inputSteps)
@@ -22,6 +22,7 @@ func (h *Handler) Staircase(logger echo.Context) {
 	// this is less clean programatically than the recursive method
 	// but its a single loop iteration so its O(n)
 	if inputSteps > 1 {
+		// initialize starting at case 1
 		first, second, sum := 0, 1, 0
 		for i := 1; i < inputSteps; i++ {
 			sum = first + second

@@ -18,36 +18,40 @@ func (h *Handler) PythagTripples(logger echo.Context) {
 	// fail case
 	// input := []int{3, 5, 16, 14, 5, 12}
 
-	// remove duplicate values
+	// remove duplicate values and sort them
 	input = removeDuplicates(input)
-	// sort
 	sort.Ints(input)
-	marshalled, _ := json.Marshal(input)
-	returnString := "Pythag tripples for set: "
-	returnString = returnString + strings.Trim(string(marshalled), "[]")
-	found := false
-	a, b, c := 0, 0, 0
 
-	for i := 0; i < len(input)-2; i++ {
-		for j := i + 1; j < len(input)-1; j++ {
-			for k := i + 2; k < len(input); k++ {
-				left := (input[i] * input[i]) + (input[j] * input[j])
-				right := (input[k] * input[k])
-				// logger.Logger().Debug(fmt.Sprintf("i: %d, j: %d, k: %d=================left: %d, right: %d", input[i], input[j], input[k], left, right))
-				if left == right {
-					a, b, c = input[i], input[j], input[k]
-					found = true
-					// logger.Logger().Debug("inside if statemetn ------------------------------------------")
-				}
+	// printing stuff
+	marshalled, _ := json.Marshal(input)
+	returnString := "Pythag tripples for set: " + strings.Trim(string(marshalled), "[]")
+
+	// generate map of squares to be referenced in loop 2
+	// key for sum comparison, value for easy printing on return
+	squares := make(map[int]int)
+	for _, value := range input {
+		squares[value*value] = value
+	}
+
+	found, a, b, c := false, 0, 0, 0
+
+	// by presorting the array and setting up the sums map
+	// we can move in step with only two loops instead of three
+	for i := 0; i < len(input)-1; i++ {
+		for j := i + 1; j < len(input); j++ {
+			// check the map of c^2 for an existing instance of a^2 + b^2
+			sum := (input[i] * input[i]) + (input[j] * input[j])
+			if _, value := squares[sum]; value {
+				// logger.Logger().Debug(fmt.Sprintf("i: %d, j: %d, squares[sum]: %d=================sum: %d, ", input[i], input[j], squares[sum], sum))
+				a, b, c = input[i], input[j], squares[sum]
+				found = value
 			}
 		}
 	}
 
 	if found {
-		// add found message to return string
 		returnString = returnString + fmt.Sprintf(" | Pythagorean Tripple found at %d^2 + %d^2 = %d^2 ", a, b, c)
 	} else {
-		// add not found message to return string
 		returnString = returnString + fmt.Sprintf(" | No Pythagorean Tripples found for this set.")
 	}
 
@@ -55,14 +59,14 @@ func (h *Handler) PythagTripples(logger echo.Context) {
 }
 
 func removeDuplicates(arr []int) []int {
-	keys := make(map[int]bool)
-	list := []int{}
+	keys, toReturn := make(map[int]bool), []int{}
 
 	for _, item := range arr {
+		// check the map for an existing instance of that record
 		if _, value := keys[item]; !value {
 			keys[item] = true
-			list = append(list, item)
+			toReturn = append(toReturn, item)
 		}
 	}
-	return list
+	return toReturn
 }

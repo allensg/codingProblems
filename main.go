@@ -17,7 +17,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Logger.SetLevel(log.DEBUG)
+
 	envVars := make(map[string]string)
+
 	// Initialize handler
 	problems := &problems.Handler{
 		Env: envVars,
@@ -25,8 +27,7 @@ func main() {
 
 	e.GET("/", func(c echo.Context) error {
 		// return c.HTML(http.StatusOK, "Hello, Docker! <3")
-
-		problems.PythagTripples(c)
+		problems.Staircase(c)
 		return nil
 	})
 

@@ -2,10 +2,7 @@ package problems
 
 import (
 	"fmt"
-	"net/http"
 	"strings"
-
-	"github.com/labstack/echo/v4"
 )
 
 // #
@@ -22,9 +19,9 @@ import (
 
 // Input: [3, 6, 3, 4, 1]
 // Output: 3 (only 6,4,1 are able to see in front of them)
-func (h *Handler) Murder(logger echo.Context) {
+func (h *Handler) Murder(input []int) (returnString string, witnesses []int) {
 	// success case
-	input, witnesses := []int{3, 6, 3, 4, 1}, []int{}
+	// []int{3, 6, 3, 4, 1}
 
 	for currentPerson, currentHeight := range input {
 		tallest := true
@@ -39,10 +36,7 @@ func (h *Handler) Murder(logger echo.Context) {
 
 	}
 
-	// fail case
-	// input := []int{3, 5, 16, 14, 5, 12}
-	returnString, count := "", len(witnesses)
-
+	count := len(witnesses)
 	if count > 0 {
 		positions := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(witnesses)), ","), "[]")
 		returnString = returnString + fmt.Sprintf("%d people in the crowd (at positions %s) witnessed the murder.", count, positions)
@@ -50,5 +44,5 @@ func (h *Handler) Murder(logger echo.Context) {
 		returnString = "There are no witnesses to the murder."
 	}
 
-	logger.HTML(http.StatusOK, returnString)
+	return returnString, witnesses
 }

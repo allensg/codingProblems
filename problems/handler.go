@@ -1,6 +1,11 @@
 package problems
 
-import "github.com/labstack/echo/v4"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/labstack/echo/v4"
+)
 
 type (
 	// Handler contains reference to whatever I need across problems
@@ -12,3 +17,7 @@ type (
 		// Trie     *patricia.Trie
 	}
 )
+
+func (h *Handler) IntArrToString(input []int) (output string) {
+	return strings.Trim(strings.Join(strings.Fields(fmt.Sprint(input)), ","), "[]")
+}

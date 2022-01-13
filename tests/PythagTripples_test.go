@@ -1,8 +1,6 @@
 package tests
 
 import (
-	"fmt"
-	"strings"
 	"testing"
 
 	"github.com/allensg/codingProblems/problems"
@@ -24,7 +22,7 @@ func TestPythagTripples(t *testing.T) {
 
 	for _, testValues := range tests {
 
-		inputArrStr := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(testValues.input)), ","), "[]")
+		inputArrStr := problems.IntArrToString(testValues.input)
 		t.Run(testValues.desc, func(t *testing.T) {
 			_, outFound, _ := problems.PythagTripples(testValues.input)
 			if outFound != testValues.found {

@@ -26,8 +26,10 @@ func main() {
 	}
 
 	e.GET("/", func(c echo.Context) error {
+		problems.Logger = c
 		// return c.HTML(http.StatusOK, "Hello, Docker! <3")
-		problems.Murder(c)
+		returnString := problems.PythagTripples()
+		c.HTML(http.StatusOK, returnString)
 		return nil
 	})
 

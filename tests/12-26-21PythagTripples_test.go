@@ -2,8 +2,22 @@ package tests
 
 import (
 	"testing"
-	// problems "github.com/allensg/codingProblems/tests"
 )
+
+envVars := make(map[string]string)
+
+e := echo.New()
+
+e.Use(middleware.Logger())
+e.Use(middleware.Recover())
+e.Logger.SetLevel(log.DEBUG)
+
+// Initialize handler
+problems := &problems.Handler{
+	Env: envVars,
+}
+
+problems.PythagTripples(e)
 
 func IntMin(a, b int) int {
 	if a < b {

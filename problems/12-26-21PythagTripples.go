@@ -3,18 +3,15 @@ package problems
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
 	"sort"
 	"strings"
-
-	"github.com/labstack/echo/v4"
 )
 
 // Given a list of numbers, find if there exists a pythagorean triplet in that list.
 // A pythagorean triplet is 3 variables a, b, c where a2 + b2 = c2
-func (h *Handler) PythagTripples(logger echo.Context) {
+func (h *Handler) PythagTripples(input []int) (string, bool, []int) {
 	// success case
-	input := []int{3, 5, 13, 14, 5, 12}
+	input = []int{3, 5, 13, 14, 5, 12}
 	// fail case
 	// input := []int{3, 5, 16, 14, 5, 12}
 
@@ -34,7 +31,6 @@ func (h *Handler) PythagTripples(logger echo.Context) {
 	}
 
 	found, a, b, c := false, 0, 0, 0
-
 	// by presorting the array and setting up the sums map
 	// we can move in step with only two loops instead of three
 	for i := 0; i < len(input)-1; i++ {
@@ -42,7 +38,7 @@ func (h *Handler) PythagTripples(logger echo.Context) {
 			// check the map of c^2 for an existing instance of a^2 + b^2
 			sum := (input[i] * input[i]) + (input[j] * input[j])
 			if _, value := squares[sum]; value {
-				// logger.Logger().Debug(fmt.Sprintf("i: %d, j: %d, squares[sum]: %d=================sum: %d, ", input[i], input[j], squares[sum], sum))
+				// h.Logger.Logger().Debug(fmt.Sprintf("i: %d, j: %d, squares[sum]: %d=================sum: %d, ", input[i], input[j], squares[sum], sum))
 				a, b, c = input[i], input[j], squares[sum]
 				found = value
 			}
@@ -55,7 +51,7 @@ func (h *Handler) PythagTripples(logger echo.Context) {
 		returnString = returnString + fmt.Sprintf(" | No Pythagorean Tripples found for this set.")
 	}
 
-	logger.HTML(http.StatusOK, returnString)
+	return returnString, found, []int{a, b, c}
 }
 
 func removeDuplicates(arr []int) []int {

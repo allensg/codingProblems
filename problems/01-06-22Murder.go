@@ -20,8 +20,6 @@ import (
 // Input: [3, 6, 3, 4, 1]
 // Output: 3 (only 6,4,1 are able to see in front of them)
 func (h *Handler) Murder(input []int) (returnString string, witnesses []int) {
-	// success case
-	// []int{3, 6, 3, 4, 1}
 
 	for currentPerson, currentHeight := range input {
 		tallest := true

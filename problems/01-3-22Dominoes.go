@@ -1,11 +1,5 @@
 package problems
 
-import (
-	"net/http"
-
-	"github.com/labstack/echo/v4"
-)
-
 // Given a string with the initial condition of dominoes, where:
 
 // . represents that the domino is standing still
@@ -17,13 +11,9 @@ import (
 
 // Input:  ..R...L..R.
 // Output: ..RR.LL..RR
-func (h *Handler) FallingDominoes(logger echo.Context) {
-	// success case
-	// input := "..R...L..R."
-	// fail case
-	// input := []int{3, 5, 16, 14, 5, 12}
+func (h *Handler) FallingDominoes(input string) (returnString string, answer string) {
 
-	returnString := " "
+	returnString = "Pythag tripples for set: "
 
-	logger.HTML(http.StatusOK, returnString)
+	return returnString, answer
 }

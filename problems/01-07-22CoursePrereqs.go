@@ -1,11 +1,5 @@
 package problems
 
-import (
-	"net/http"
-
-	"github.com/labstack/echo/v4"
-)
-
 // Example:
 // {
 //   'CSC300': ['CSC100', 'CSC200'],
@@ -20,13 +14,9 @@ import (
 // list of all the course codes that are prerequisites for the key.
 // Return a valid ordering in which we can complete the courses.
 // If no such ordering exists, return NULL
-func (h *Handler) CoursesToTake(logger echo.Context) {
-	// success case
-	// input := "..R...L..R."
-	// fail case
-	// input := []int{3, 5, 16, 14, 5, 12}
+func (h *Handler) CoursesToTake(input map[string][]string) (returnString string, answer []string) {
 
-	returnString := "Pythag tripples for set: "
+	returnString = "Pythag tripples for set: "
 
-	logger.HTML(http.StatusOK, returnString)
+	return returnString, answer
 }

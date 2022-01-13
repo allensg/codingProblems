@@ -24,14 +24,13 @@ func TestPythagTripples(t *testing.T) {
 
 	for _, testValues := range tests {
 
-		inputArr := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(testValues.input)), ","), "[]")
-		testname := fmt.Sprintf("%s: %s", testValues.desc, inputArr)
-		t.Run(testname, func(t *testing.T) {
+		inputArrStr := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(testValues.input)), ","), "[]")
+		t.Run(testValues.desc, func(t *testing.T) {
 			_, outFound, _ := problems.PythagTripples(testValues.input)
 			if outFound != testValues.found {
-				t.Errorf("got %t, want %t", outFound, testValues.found)
+				t.Errorf("input: %s | want %t | got %t", inputArrStr, testValues.found, outFound)
 			} else {
-				t.Logf("got %t, want %t", outFound, testValues.found)
+				t.Logf("input: %s | want %t | got %t", inputArrStr, testValues.found, outFound)
 			}
 		})
 	}

@@ -3,6 +3,7 @@ package problems
 import (
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 )
@@ -25,15 +26,15 @@ func (h *Handler) Murder(logger echo.Context) {
 	// success case
 	input, witnesses := []int{3, 6, 3, 4, 1}, []int{}
 
-	for i, k := range input {
+	for currentPerson, currentHeight := range input {
 		tallest := true
-		for _, v := range input[i+1:] {
-			if k < v {
+		for _, compareHeight := range input[currentPerson+1:] {
+			if currentHeight < compareHeight {
 				tallest = false
 			}
 		}
 		if tallest {
-			witnesses = append(witnesses, i)
+			witnesses = append(witnesses, currentPerson)
 		}
 
 	}
@@ -43,7 +44,8 @@ func (h *Handler) Murder(logger echo.Context) {
 	returnString, count := "", len(witnesses)
 
 	if count > 0 {
-		returnString = returnString + fmt.Sprintf("%d people in the crowd (at positions %+q) witnessed the murder.", count, witnesses)
+		positions := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(witnesses)), ","), "[]")
+		returnString = returnString + fmt.Sprintf("%d people in the crowd (at positions %s) witnessed the murder.", count, positions)
 	} else {
 		returnString = "There are no witnesses to the murder."
 	}

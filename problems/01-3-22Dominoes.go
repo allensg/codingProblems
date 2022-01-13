@@ -23,7 +23,7 @@ func (h *Handler) FallingDominoes(logger echo.Context) {
 	// fail case
 	// input := []int{3, 5, 16, 14, 5, 12}
 
-	returnString := ": "
+	returnString := " "
 
 	logger.HTML(http.StatusOK, returnString)
 }

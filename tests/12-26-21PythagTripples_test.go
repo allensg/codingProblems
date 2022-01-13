@@ -1,45 +1,38 @@
 package tests
 
 import (
+	"fmt"
+	"strings"
 	"testing"
+
+	"github.com/allensg/codingProblems/problems"
 )
 
-envVars := make(map[string]string)
+func TestPythagTripples(t *testing.T) {
 
-e := echo.New()
-
-e.Use(middleware.Logger())
-e.Use(middleware.Recover())
-e.Logger.SetLevel(log.DEBUG)
-
-// Initialize handler
-problems := &problems.Handler{
-	Env: envVars,
-}
-
-problems.PythagTripples(e)
-
-func IntMin(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func TestIntMinBasic(t *testing.T) {
-	ans := IntMin(2, -2)
-	if ans != -2 {
-
-		t.Errorf("IntMin(2, -2) = %d; want -2", ans)
+	// Initialize handler
+	problems := &problems.Handler{}
+	var tests = []struct {
+		input []int
+		found bool
+		arr   []int
+		desc  string
+	}{
+		{[]int{3, 5, 13, 14, 5, 12}, true, []int{5, 13, 12}, "Success case"},
+		{[]int{3, 5, 16, 14, 5, 12}, false, []int{5, 13, 12}, "Fail case"},
 	}
 
+	for _, testValues := range tests {
+
+		inputArr := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(testValues.input)), ","), "[]")
+		testname := fmt.Sprintf("%s: %s", testValues.desc, inputArr)
+		t.Run(testname, func(t *testing.T) {
+			_, outFound, _ := problems.PythagTripples(testValues.input)
+			if outFound != testValues.found {
+				t.Errorf("got %t, want %t", outFound, testValues.found)
+			} else {
+				t.Logf("got %t, want %t", outFound, testValues.found)
+			}
+		})
+	}
 }
-
-// func TestPythagTripples(t *testing.T) {
-// 	problems := &problems.Handler{
-// 		// Env: envVars,
-// 	}
-
-// 	answer := problems.PythagTripples()
-// 	t.Errorf
-// }

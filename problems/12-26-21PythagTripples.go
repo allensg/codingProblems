@@ -11,7 +11,7 @@ import (
 // A pythagorean triplet is 3 variables a, b, c where a2 + b2 = c2
 func (h *Handler) PythagTripples(input []int) (string, bool, []int) {
 	// success case
-	input = []int{3, 5, 13, 14, 5, 12}
+	// input = []int{3, 5, 13, 14, 5, 12}
 	// fail case
 	// input := []int{3, 5, 16, 14, 5, 12}
 

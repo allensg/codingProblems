@@ -28,7 +28,8 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		problems.Logger = c
 		// return c.HTML(http.StatusOK, "Hello, Docker! <3")
-		returnString := problems.PythagTripples()
+		input := []int{3, 5, 13, 14, 5, 12}
+		returnString, _, _ := problems.PythagTripples(input)
 		c.HTML(http.StatusOK, returnString)
 		return nil
 	})

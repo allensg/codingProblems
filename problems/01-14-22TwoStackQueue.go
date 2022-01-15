@@ -4,6 +4,14 @@ package problems
 // the FIFO protocol (First in = first out). Your class should support the enqueue and dequeue methods like a standard queue.
 // implement constructor, enqueue, dequeue
 
+// should work like q = Queue()
+// q.enqueue(1)
+// q.enqueue(2)
+// q.enqueue(3)
+// print q.dequeue()
+// print q.dequeue()
+// print q.dequeue()
+// # 1 2 3
 type Queue struct {
 	stuff string
 }

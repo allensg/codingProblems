@@ -22,7 +22,7 @@ func (h *Handler) MoveZeros(input []int) (returnString string, answer []int) {
 	}
 
 	// backfill the last zerOffset elements in the array with zeroes.
-	for i, _ := range input[zeroOffset:] {
+	for i := range input[zeroOffset:] {
 		input[zeroOffset+i] = 0
 	}
 

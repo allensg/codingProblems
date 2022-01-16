@@ -21,7 +21,3 @@ type (
 func (h *Handler) IntArrToString(input []int) (output string) {
 	return strings.Trim(strings.Join(strings.Fields(fmt.Sprint(input)), ","), "[]")
 }
-
-func (h *Handler) FloatArrToString(input []float64) (output string) {
-	return strings.Trim(strings.Join(strings.Fields(fmt.Sprint(input)), ","), "[]")
-}

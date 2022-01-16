@@ -21,3 +21,18 @@ type (
 func (h *Handler) IntArrToString(input []int) (output string) {
 	return strings.Trim(strings.Join(strings.Fields(fmt.Sprint(input)), ","), "[]")
 }
+
+func (h *Handler) AreIntArraysEqual(a []int, b []int) (equal bool) {
+	equal = true
+	if len(a) != len(b) {
+		equal = false
+	} else {
+		for i, k := range a {
+			if k != b[i] {
+				equal = false
+			}
+		}
+	}
+
+	return equal
+}

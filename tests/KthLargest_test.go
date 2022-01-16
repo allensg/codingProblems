@@ -16,7 +16,7 @@ func TestFindKthLargest(t *testing.T) {
 		kthLargest int
 		desc       string
 	}{
-		{[]int{3, 5, 2, 4, 6, 8}, 3, 5, "Success Case"},
+		{[]int{3, 5, 2, 4, 6, 8}, 3, 5, "Given Test Case"},
 		{[]int{8, 34, 18, 3, 21, 1}, 1, 34, "Found Largest"},
 		{[]int{7, 6, 2, 41, 5, 4}, 6, 2, "Found Smallest"},
 		{[]int{8}, 2, -1, "Out of Bounds"},

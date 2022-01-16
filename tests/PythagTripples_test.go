@@ -16,7 +16,7 @@ func TestPythagTripples(t *testing.T) {
 		arr   []int
 		desc  string
 	}{
-		{[]int{3, 5, 13, 14, 5, 12}, true, []int{5, 13, 12}, "Success case"},
+		{[]int{3, 5, 13, 14, 5, 12}, true, []int{5, 13, 12}, "Given Test Case"},
 		{[]int{3, 5, 16, 14, 5, 12}, false, []int{5, 13, 12}, "Fail case"},
 	}
 

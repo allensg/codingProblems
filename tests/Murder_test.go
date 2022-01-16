@@ -16,7 +16,7 @@ func TestMurder(t *testing.T) {
 		witnesses []int
 		desc      string
 	}{
-		{[]int{3, 6, 3, 4, 1}, 3, []int{1, 3, 4}, "Success Case"},
+		{[]int{3, 6, 3, 4, 1}, 3, []int{1, 3, 4}, "Given Test Case"},
 		{[]int{}, 0, []int{}, "EmptyArr"},
 		{[]int{3, 6, 3, 4, 9}, 1, []int{4}, "Tall Guy Blocker Case"},
 	}

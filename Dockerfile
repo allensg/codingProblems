@@ -14,6 +14,7 @@ RUN go mod download
 COPY *.go ./
 COPY ./problems ./problems
 COPY ./tests ./tests
+COPY ./helpers ./helpers
 
 # Build
 RUN go build -o /coding-problems

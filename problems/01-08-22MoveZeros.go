@@ -1,6 +1,10 @@
 package problems
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/allensg/codingProblems/helpers"
+)
 
 // Given an array nums, write a function to move all 0's to the end
 // of it while maintaining the relative order of the non-zero elements.
@@ -10,7 +14,7 @@ import "fmt"
 // Input: [0,1,0,3,12]
 // Output: [1,3,12,0,0]
 func (h *Handler) MoveZeros(input []int) (returnString string, answer []int) {
-
+	helper := &helpers.Helpers{}
 	zeroOffset := 0
 	// move all non zero elements to the front of the array
 	for _, k := range input {
@@ -26,6 +30,6 @@ func (h *Handler) MoveZeros(input []int) (returnString string, answer []int) {
 		input[zeroOffset+i] = 0
 	}
 
-	returnString = fmt.Sprintf("The restructured array for this input is %s", h.IntArrToString(input))
+	returnString = fmt.Sprintf("The restructured array for this input is %s", helper.IntArrToString(input))
 	return returnString, input
 }

@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/allensg/codingProblems/helpers"
 	"github.com/allensg/codingProblems/problems"
 )
 
 func TestMoveZeross(t *testing.T) {
 	// Initialize handler
-	problems := &problems.Handler{}
+	problems, helper := &problems.Handler{}, &helpers.Helpers{}
+
 	var tests = []struct {
 		input  []int
 		answer []int
@@ -22,12 +24,12 @@ func TestMoveZeross(t *testing.T) {
 
 	for _, testValues := range tests {
 
-		inputArrStr := problems.IntArrToString(testValues.input)
+		inputArrStr := helper.IntArrToString(testValues.input)
 		testname := fmt.Sprintf("%s", testValues.desc)
 		t.Run(testname, func(t *testing.T) {
 			returnString, outAnswer := problems.MoveZeros(testValues.input)
 			fmt.Println(returnString)
-			if !problems.AreIntArraysEqual(testValues.answer, outAnswer) {
+			if !helper.AreIntArraysEqual(testValues.answer, outAnswer) {
 				t.Errorf("input: %s | want %d | got %d", inputArrStr, testValues.answer, outAnswer)
 			} else {
 				t.Logf("input: %s | want %d | got %d", inputArrStr, testValues.answer, outAnswer)

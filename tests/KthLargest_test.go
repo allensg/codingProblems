@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/allensg/codingProblems/helpers"
 	"github.com/allensg/codingProblems/problems"
 )
 
 func TestFindKthLargest(t *testing.T) {
 	// Initialize handler
-	problems := &problems.Handler{}
+	problems, helper := &problems.Handler{}, &helpers.Helpers{}
+
 	var tests = []struct {
 		input      []int
 		toFind     int
@@ -24,7 +26,7 @@ func TestFindKthLargest(t *testing.T) {
 
 	for _, testValues := range tests {
 
-		inputArrStr := problems.IntArrToString(testValues.input)
+		inputArrStr := helper.IntArrToString(testValues.input)
 		testname := fmt.Sprintf("%s", testValues.desc)
 		t.Run(testname, func(t *testing.T) {
 			_, outAnswer := problems.FindKthLargest(testValues.input, testValues.toFind)

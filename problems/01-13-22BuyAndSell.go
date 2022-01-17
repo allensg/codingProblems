@@ -1,6 +1,10 @@
 package problems
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/allensg/codingProblems/helpers"
+)
 
 // You are given an array. Each element represents the price of a stock on that particular day.
 // Calculate and return the maximum profit you can make from buying and selling that stock only once
@@ -8,7 +12,7 @@ import "fmt"
 // Input: [9, 11, 8, 5, 7, 10]
 // Output: 10-5 = 5
 func (h *Handler) BuyAndSell(input []int) (returnString string, maxProfit int) {
-
+	helper := &helpers.Helpers{}
 	// traversing the array backwards keeps it at O(n)
 	currentHighest := 0
 	maxProfit = 0
@@ -24,7 +28,7 @@ func (h *Handler) BuyAndSell(input []int) (returnString string, maxProfit int) {
 		}
 	}
 
-	strArr := h.IntArrToString(input)
+	strArr := helper.IntArrToString(input)
 	returnString = fmt.Sprintf("The Max Profit that can be gained on day %s is %d", strArr, maxProfit)
 
 	return returnString, maxProfit

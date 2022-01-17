@@ -3,13 +3,15 @@ package tests
 import (
 	"testing"
 
+	"github.com/allensg/codingProblems/helpers"
 	"github.com/allensg/codingProblems/problems"
 )
 
 func TestPythagTripples(t *testing.T) {
 
 	// Initialize handler
-	problems := &problems.Handler{}
+	problems, helper := &problems.Handler{}, &helpers.Helpers{}
+
 	var tests = []struct {
 		input []int
 		found bool
@@ -22,7 +24,7 @@ func TestPythagTripples(t *testing.T) {
 
 	for _, testValues := range tests {
 
-		inputArrStr := problems.IntArrToString(testValues.input)
+		inputArrStr := helper.IntArrToString(testValues.input)
 		t.Run(testValues.desc, func(t *testing.T) {
 			_, outFound, _ := problems.PythagTripples(testValues.input)
 			if outFound != testValues.found {

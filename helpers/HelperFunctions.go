@@ -35,6 +35,10 @@ func (h *Helpers) CreateLinkedList() (list LinkedList) {
 	return LinkedList{}
 }
 
+func (h *Helpers) CreateNode() (node Node) {
+	return Node{}
+}
+
 func (h *Helpers) AreLinkedListsEqual(a LinkedList, b LinkedList) (equal bool) {
 	strA, strB := a.DisplayString(), b.DisplayString()
 	if strA != strB {
@@ -61,4 +65,54 @@ func (h *Helpers) StringArrToLinkedList(input []string) (list LinkedList) {
 	}
 
 	return list
+}
+
+// return the min value from the array of ints
+func (h *Helpers) FindMinIntArrValue(input []int) (min int) {
+	min = 0
+	for _, k := range input {
+		if k > min {
+			min = k
+		}
+	}
+
+	return min
+}
+
+// return the index of the min value
+func (h *Helpers) FindMinIntArrIndex(input []int) int {
+	minIndex, min := 0, 0
+	for i, k := range input {
+		if k > min {
+			minIndex, min = i, k
+		}
+	}
+
+	return minIndex
+}
+
+// return the min value from the array of int Nodes
+func (h *Helpers) FindMinIntNodeArrValue(input []Node) int {
+	min := ^int(0)
+	for _, k := range input {
+		key, _ := k.key.(int)
+		if min > key {
+			min = key
+		}
+	}
+
+	return min
+}
+
+// return the index of the min value from the array of int Nodes
+func (h *Helpers) FindMinIntNodeArrIndex(input []Node) int {
+	minIndex, min := 0, ^int(0)
+	for i, k := range input {
+		key, _ := k.key.(int)
+		if min > key {
+			minIndex, min = i, key
+		}
+	}
+
+	return minIndex
 }

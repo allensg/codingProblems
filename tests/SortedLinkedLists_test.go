@@ -15,6 +15,7 @@ var helper = &helpers.Helpers{}
 func TestSortLinkedLists(t *testing.T) {
 	// Initialize handler
 
+	// fuck this linked list noise
 	var tests = []struct {
 		input  [][]int
 		answer string

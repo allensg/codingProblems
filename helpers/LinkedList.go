@@ -32,6 +32,10 @@ func (L *LinkedList) Insert(key interface{}) {
 	L.tail = l
 }
 
+func (N *Node) StepForward() {
+	N = N.next
+}
+
 func (l *LinkedList) Display() {
 	list := l.head
 	for list != nil {
@@ -79,4 +83,46 @@ func (l *LinkedList) Reverse() {
 	}
 	l.head = prev
 	Display(l.head)
+}
+
+func (l *LinkedList) Length() (length int) {
+	count := 0
+	list := l.head
+	if list == nil {
+		return count
+	} else {
+		count = 1
+		for list.next != nil {
+			count = count + 1
+			list = list.next
+		}
+	}
+
+	return count
+}
+
+func (l *LinkedList) GetHead() (node Node) {
+	return *l.head
+}
+
+func (l *LinkedList) SetHead(node Node) {
+	*l.head = node
+}
+
+func (l *LinkedList) GetTail() (node Node) {
+	return *l.tail
+}
+
+func (l *LinkedList) SetTail(node Node) {
+	*l.tail = node
+}
+
+// get the key for int type
+func (n *Node) GetKeyInt() (key int) {
+	return n.key.(int)
+}
+
+// set the key for int type
+func (n *Node) SetKeyInt(input int) {
+	n.key = input
 }

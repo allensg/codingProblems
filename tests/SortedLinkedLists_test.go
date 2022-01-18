@@ -25,13 +25,15 @@ func TestSortLinkedLists(t *testing.T) {
 			{1, 3, 6},
 			{2, 4, 7},
 			{5, 8, 9},
-		}, "1,2,3,4,5,6,7,8,9", "Given Test Case"},
-		// {[]int{8, 5, 4, 3, 2, 1}, 0, "No profit available"},
-		// {[]int{1, 2, 3, 4, 5, 44}, 43, "All profit"},
+		}, "9 ->8 ->7 ->6 ->5 ->4 ->3 ->2 ->1 ->", "Given Test Case"},
+		{[][]int{
+			{9, 14, 23},
+			{6, 31, 38, 126},
+			{1, 12, 129, 145, 999},
+		}, "999 ->145 ->129 ->126 ->38 ->31 ->23 ->14 ->12 ->9 ->6 ->1 ->", "Multiple lengths"},
 	}
 
 	for _, testValues := range tests {
-		fmt.Println("top-------------------------")
 
 		inputArrStr := formatInputArrStr(testValues.input)
 		testname := fmt.Sprintf("%s", testValues.desc)
@@ -59,6 +61,7 @@ func GenerateTestDataList(input [][]int) (listarr []helpers.LinkedList) {
 		for _, cell := range h {
 			list.Insert(cell)
 		}
+		list.Reverse()
 		listarr = append(listarr, list)
 	}
 

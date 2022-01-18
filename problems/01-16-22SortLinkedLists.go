@@ -1,8 +1,6 @@
 package problems
 
 import (
-	"fmt"
-
 	"github.com/allensg/codingProblems/helpers"
 )
 
@@ -13,11 +11,10 @@ import (
 // b = Node(2, Node(4, Node(6)))
 // print merge([a, b])
 // # 123456
-
-func (h *Handler) SortLinkedLists(input []helpers.LinkedList) (returnString string, list helpers.LinkedList) {
+// fuck link lists. just using a library next time
+func (h *Handler) SortLinkedLists(input []helpers.LinkedList) (returnString string, returnList helpers.LinkedList) {
 	helper := helpers.Helpers{}
-	returnList := helper.CreateLinkedList()
-
+	returnList = helper.CreateLinkedList()
 	currentNodes := make([]helpers.Node, len(input))
 
 	// calculate length of input (total number of nodes)
@@ -30,22 +27,28 @@ func (h *Handler) SortLinkedLists(input []helpers.LinkedList) (returnString stri
 
 	//while we have not sorted all the elements
 	for returnList.Length() != targetLen {
-
 		// find min of the current values
 		for range currentNodes {
-
 			minIndex := helper.FindMinIntNodeArrIndex(currentNodes)
 			// add that node to the return list
 			nodeToAdd := currentNodes[minIndex]
 			val := nodeToAdd.GetKeyInt()
-			fmt.Println("===========================")
-			fmt.Println(val)
 
 			returnList.Insert(val)
-			// update currentNodes selected index with .next
-			nodeToAdd.StepForward()
+			// if we have just added the last node in a sub list to the return list
+			if nodeToAdd.GetNext() == nil {
+				// invalidate that index
+				nilNode := helper.CreateNode()
+				nilNode.SetKeyInt(-1)
+				currentNodes[minIndex] = nilNode
+			} else {
+				// update currentNodes selected index with .next
+				nextNode := nodeToAdd.StepForward()
+				currentNodes[minIndex] = *nextNode
+			}
+
 		}
 	}
 
-	return returnString, list
+	return returnString, returnList
 }

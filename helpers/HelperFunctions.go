@@ -106,9 +106,23 @@ func (h *Helpers) FindMinIntNodeArrValue(input []Node) int {
 
 // return the index of the min value from the array of int Nodes
 func (h *Helpers) FindMinIntNodeArrIndex(input []Node) int {
-	minIndex, min := 0, ^int(0)
+	fmt.Println(input)
+	minIndex, min := 0, -1
 	for i, k := range input {
+		fmt.Println("----------------------")
+		fmt.Println(i)
+		fmt.Println(k)
 		key, _ := k.key.(int)
+		if key == -1 {
+			// if key = -1 its already been processed as the last element in the array
+			// sub skip over it
+			minIndex = i + 1
+			continue
+		}
+		if min == -1 {
+			// if we're on the first element, its the smallest
+			min = key
+		}
 		if min > key {
 			minIndex, min = i, key
 		}

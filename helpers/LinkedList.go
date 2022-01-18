@@ -32,8 +32,8 @@ func (L *LinkedList) Insert(key interface{}) {
 	L.tail = l
 }
 
-func (N *Node) StepForward() {
-	N = N.next
+func (n *Node) StepForward() *Node {
+	return n.next
 }
 
 func (l *LinkedList) Display() {
@@ -113,8 +113,8 @@ func (l *LinkedList) GetTail() (node Node) {
 	return *l.tail
 }
 
-func (l *LinkedList) SetTail(node Node) {
-	*l.tail = node
+func (l *LinkedList) SetTail(node *Node) {
+	*l.tail = *node
 }
 
 // get the key for int type
@@ -125,4 +125,9 @@ func (n *Node) GetKeyInt() (key int) {
 // set the key for int type
 func (n *Node) SetKeyInt(input int) {
 	n.key = input
+}
+
+// get the key for int type
+func (n *Node) GetNext() (node *Node) {
+	return n.next
 }

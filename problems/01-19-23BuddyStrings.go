@@ -9,14 +9,14 @@ import "fmt"
 // output: true
 func (h *Handler) BuddyStrings(input []string) (returnString string, answer bool) {
 	a, b := []rune(input[0]), []rune(input[1])
-	returnString = fmt.Sprintf("Strings %s and %s are compatible", a, b)
+	returnString = fmt.Sprintf("Strings %s and %s are compatible", string(a), string(b))
 	if len(a) != len(b) {
-		return fmt.Sprintf("Strings %s and %s are not of equal length", a, b), false
+		return fmt.Sprintf("Strings %s and %s are not of equal length", string(a), string(b)), false
 	}
 
-	for i, k := range a {
+	// for i, k := range a {
 
-	}
+	// }
 	// if a == b && len(a) > len(set(a)) {
 	// 	return returnString, true
 	// }

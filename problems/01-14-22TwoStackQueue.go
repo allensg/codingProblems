@@ -13,7 +13,7 @@ package problems
 // print q.dequeue()
 // # 1 2 3
 type Queue struct {
-	stuff string
+	//stuff string
 }
 
 func (h *Handler) TwoStackQueue(input []int) (returnString string, maxProfit int) {

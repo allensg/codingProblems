@@ -48,7 +48,7 @@ func (h *Handler) PythagTripples(input []int) (string, bool, []int) {
 	if found {
 		returnString = returnString + fmt.Sprintf(" | Pythagorean Tripple found at %d^2 + %d^2 = %d^2 ", a, b, c)
 	} else {
-		returnString = returnString + fmt.Sprintf(" | No Pythagorean Tripples found for this set.")
+		returnString = returnString + " | No Pythagorean Tripples found for this set."
 	}
 
 	return returnString, found, []int{a, b, c}

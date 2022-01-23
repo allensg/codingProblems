@@ -34,7 +34,8 @@ func (h *Handler) MaxContigSubArray(input []int) (returnString string, subArray 
 			maxSoFar = maxEndingHere
 		}
 
-		fmt.Println(fmt.Sprintf("i: %d, soFar: %d, endingHere: %d", i, maxSoFar, maxEndingHere))
+		// fmt.Println(fmt.Sprintf("i: %d, soFar: %d, endingHere: %d", i, maxSoFar, maxEndingHere))
+		fmt.Printf("i: %d, soFar: %d, endingHere: %d", i, maxSoFar, maxEndingHere)
 	}
 
 	returnString = fmt.Sprintf("The maximum sub array sum of %d has been found between positions %d(%d) and %d(%d)", maxSoFar, subArray[0], input[subArray[0]], subArray[1], input[subArray[1]])

@@ -21,5 +21,7 @@ func (h *Handler) BuddyStrings(input []string) (returnString string, answer bool
 	// 	return returnString, true
 	// }
 
+	//commit test
+
 	return returnString, answer
 }

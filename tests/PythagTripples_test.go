@@ -4,13 +4,13 @@ import (
 	"testing"
 
 	"github.com/allensg/codingProblems/helpers"
-	"github.com/allensg/codingProblems/problems"
+	"github.com/allensg/codingProblems/problems/goProblems"
 )
 
 func TestPythagTripples(t *testing.T) {
 
 	// Initialize handler
-	problems, helper := &problems.Handler{}, &helpers.Helpers{}
+	problems, helper := &goProblems.Handler{}, &helpers.Helpers{}
 
 	var tests = []struct {
 		input []int

@@ -13,5 +13,13 @@ package goProblems
 
 func (h *Handler) LookAndSay(input string, term int) (returnString string, answer string) {
 
+	// loop over each digit. if the index is even its to be a string rep.
+	// if its odd you print it as the integer itself
+	// do this until the
+
+	for index, value := range input {
+
+	}
+
 	return returnString, answer
 }

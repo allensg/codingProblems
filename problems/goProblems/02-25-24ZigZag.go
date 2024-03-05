@@ -11,7 +11,8 @@ package goProblems
 func (h *Handler) ZigZagConversion(str string, lines int) (returnString string, answer string) {
 	ZigZag := StringToZigZag(str, lines)
 	scrambledString := ZigZagToString(ZigZag)
-	return returnString, answer
+
+	return "", scrambledString
 }
 
 // takes in a string and stores it in columns like so
@@ -50,4 +51,8 @@ func StringToZigZag(str string, lines int) *[][]rune {
 	}
 
 	return &ZigZag
+}
+
+func ZigZagToString(*[][]rune) string {
+	return ""
 }

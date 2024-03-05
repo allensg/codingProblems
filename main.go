@@ -29,7 +29,7 @@ func main() {
 		problems.Logger = c
 		// return c.HTML(http.StatusOK, "Hello, Docker! <3")
 		// input := []int{3, 5, 13, 14, 5, 12}
-		returnString := problems.ConcurrentTree(10, 10)
+		returnString := problems.LetterCombinations("23")
 		c.HTML(http.StatusOK, returnString)
 		return nil
 	})

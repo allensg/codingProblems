@@ -21,7 +21,7 @@ type ListNode struct {
 // Input: list1 = [], list2 = [0]
 // Output: [0]
 func (h *Handler) mergeTwoLists(list1 *ListNode, list2 *ListNode) string {
-	mergedList := mergeList()
+	mergedList := mergeList(list1, list2)
 	str := generateListNodeString(mergedList)
 	return str
 }
@@ -30,35 +30,37 @@ func (h *Handler) mergeTwoLists(list1 *ListNode, list2 *ListNode) string {
 // so instead of iterating over one list of the other i'll be iterating 0-50 until a both nodes are nil
 func mergeList(list1 *ListNode, list2 *ListNode) *ListNode {
 	baseNode := &ListNode{}
-	for list1 != nil && list2 != nil {
+	baseNodeHead := baseNode
+	node1, node2 := list1, list2
+	for node1 != nil && node2 != nil {
 
-		if list1.Val >= list2.Val {
-			baseNode.Val = list1.Val
+		if node1.Val > node2.Val {
+			baseNode.Val = node1.Val
 			baseNode.Next = &ListNode{}
-			list1 = list1.Next
+			node1 = node1.Next
 		} else {
-			baseNode.Val = list2.Val
+			baseNode.Val = node2.Val
 			baseNode.Next = &ListNode{}
-			list2 = list2.Next
+			node2 = node2.Next
 		}
 		baseNode = baseNode.Next
 	}
 
-	for list1 != nil {
-		baseNode.Val = list1.Val
+	for node1 != nil {
+		baseNode.Val = node1.Val
 		baseNode.Next = &ListNode{}
-		list1 = list1.Next
+		node1 = node1.Next
 		baseNode = baseNode.Next
 	}
 
-	for list2 != nil {
-		baseNode.Val = list2.Val
+	for node2 != nil {
+		baseNode.Val = node2.Val
 		baseNode.Next = &ListNode{}
-		list2 = list2.Next
+		node2 = node2.Next
 		baseNode = baseNode.Next
 	}
 
-	return baseNode
+	return baseNodeHead
 }
 
 func generateListNodeString(list *ListNode) string {

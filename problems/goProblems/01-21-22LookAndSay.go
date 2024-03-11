@@ -17,9 +17,9 @@ func (h *Handler) LookAndSay(input string, term int) (returnString string, answe
 	// if its odd you print it as the integer itself
 	// do this until the
 
-	for index, value := range input {
+	// for index, value := range input {
 
-	}
+	// }
 
 	return returnString, answer
 }

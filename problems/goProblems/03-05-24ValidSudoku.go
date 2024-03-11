@@ -24,7 +24,7 @@ package goProblems
 
 func (h *Handler) validSudoku() string {
 	// so the key here is the 3x3 processing
-	board := [9][9]rune{}
+	// board := [9][9]rune{}
 
 	return ""
 }

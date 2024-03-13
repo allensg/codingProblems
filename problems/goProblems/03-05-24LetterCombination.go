@@ -18,23 +18,25 @@ func (h *Handler) LetterCombinations(phoneNumber string) (returnString string) {
 	digitMap := makeDigitMap()
 	combinations := []string{}
 
-	// iterate over the characters of the phone number
-	for index, value := range phoneNumber {
-		// pull the current number's letter value array
-		currentDigitArray := digitMap[value]
-		//loop over that array
-		// ex: [a,b,c]
-		for _, letter := range currentDigitArray {
-			//loop over phonenumber[index+1:] value and add it to the combination
-			for _, subDigit := range phoneNumber[index+1:] {
-				subDigitArray := digitMap[int32(subDigit)]
-				for _, subLetter := range subDigitArray {
-					combinations = append(combinations, letter+subLetter)
-				}
+	if len(phoneNumber) == 0 {
+		return ""
+	}
+	// 	Define Recursive Function: Utilize a recursive function backtrack that takes the current combination and the next digits to explore.
+	var traverse func(current string, next string)
+	traverse = func(current string, next string) {
+		// Termination Condition: If there are no more digits to explore, append the current combination to the result.
+		// Exploration: Iterate through the corresponding letters of the next digit and recursively explore the remaining digits.
+		if next == "" {
+			combinations = append(combinations, current)
+		} else {
+			currentDigitArray := digitMap[rune(next[0])]
+			for _, letter := range currentDigitArray {
+				traverse(current+string(letter), next[1:])
 			}
 		}
 	}
 
+	traverse("", phoneNumber)
 	return strings.Join(combinations, " ")
 }
 

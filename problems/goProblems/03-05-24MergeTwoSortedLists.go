@@ -1,10 +1,8 @@
 package goProblems
 
+import "github.com/allensg/codingProblems/helpers"
+
 // Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 // You are given the heads of two sorted linked lists list1 and list2.
 // Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
@@ -20,7 +18,7 @@ type ListNode struct {
 
 // Input: list1 = [], list2 = [0]
 // Output: [0]
-func (h *Handler) mergeTwoLists(list1 *ListNode, list2 *ListNode) string {
+func (h *Handler) mergeTwoLists(list1 *helpers.ListNode, list2 *helpers.ListNode) string {
 	mergedList := mergeList(list1, list2)
 	str := generateListNodeString(mergedList)
 	return str
@@ -28,19 +26,19 @@ func (h *Handler) mergeTwoLists(list1 *ListNode, list2 *ListNode) string {
 
 // ok so apparently for the context of this problem the lists can be of different lengths between 0 and 50
 // so instead of iterating over one list of the other i'll be iterating 0-50 until a both nodes are nil
-func mergeList(list1 *ListNode, list2 *ListNode) *ListNode {
-	baseNode := &ListNode{}
+func mergeList(list1 *helpers.ListNode, list2 *helpers.ListNode) *helpers.ListNode {
+	baseNode := &helpers.ListNode{}
 	baseNodeHead := baseNode
 	node1, node2 := list1, list2
 	for node1 != nil && node2 != nil {
 
 		if node1.Val > node2.Val {
 			baseNode.Val = node1.Val
-			baseNode.Next = &ListNode{}
+			baseNode.Next = &helpers.ListNode{}
 			node1 = node1.Next
 		} else {
 			baseNode.Val = node2.Val
-			baseNode.Next = &ListNode{}
+			baseNode.Next = &helpers.ListNode{}
 			node2 = node2.Next
 		}
 		baseNode = baseNode.Next
@@ -48,14 +46,14 @@ func mergeList(list1 *ListNode, list2 *ListNode) *ListNode {
 
 	for node1 != nil {
 		baseNode.Val = node1.Val
-		baseNode.Next = &ListNode{}
+		baseNode.Next = &helpers.ListNode{}
 		node1 = node1.Next
 		baseNode = baseNode.Next
 	}
 
 	for node2 != nil {
 		baseNode.Val = node2.Val
-		baseNode.Next = &ListNode{}
+		baseNode.Next = &helpers.ListNode{}
 		node2 = node2.Next
 		baseNode = baseNode.Next
 	}
@@ -63,7 +61,7 @@ func mergeList(list1 *ListNode, list2 *ListNode) *ListNode {
 	return baseNodeHead
 }
 
-func generateListNodeString(list *ListNode) string {
+func generateListNodeString(list *helpers.ListNode) string {
 	valString := ""
 	for list.Next != nil {
 		valString = valString + string(list.Val)

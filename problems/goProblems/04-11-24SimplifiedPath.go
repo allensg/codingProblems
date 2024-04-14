@@ -1,6 +1,8 @@
 package goProblems
 
 import (
+	"strings"
+
 	"github.com/allensg/codingProblems/helpers"
 )
 
@@ -16,8 +18,29 @@ import (
 // The path only contains the directories on the path from the root directory to the target file or directory (i.e., no period '.' or double period '..')
 // Return the simplified canonical path.
 
-func (h *Handler) SimplifyPath(str string) (returnString string, output bool) {
-	var stack helpers.Stack
+func (h *Handler) SimplifyPath(str string) (returnString string, output string) {
+	var stack helpers.StringStack
 
-	return "", stack.IsEmpty()
+	split := strings.Split(str, "/")
+
+	for _, val := range split {
+
+		switch val {
+		// ignore
+		case "", ".":
+			continue
+		// everytime we hit a .. we pop a directory off the stack
+		case "..":
+			if !stack.IsEmpty() {
+				stack.Pop()
+			}
+		// every time we hit a / we add that directory to the stack
+		default:
+			stack.Push(val)
+		}
+
+	}
+	// actually because the stack is just an array we can just join strings.join /
+	toReturn := strings.Join(stack, "/")
+	return "", toReturn
 }

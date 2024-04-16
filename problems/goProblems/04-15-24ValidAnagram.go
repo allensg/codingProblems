@@ -19,9 +19,7 @@ func (h *Handler) ValidAnagram(str1, str2 string) (returnString string, isAnagra
 		return string(runes)
 	}
 
-	sorted1, sorted2 := stringSort(str1), stringSort(str2)
-
-	return "", sorted1 == sorted2
+	return "", stringSort(str1) == stringSort(str2)
 }
 
 // old solution

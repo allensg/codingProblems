@@ -10,8 +10,7 @@ import "sort"
 
 func (h *Handler) ValidAnagram(str1, str2 string) (returnString string, isAnagram bool) {
 
-	var stringSort func(str string) string
-	stringSort = func(str string) string {
+	stringSort := func(str string) string {
 		runes := []rune(str)
 		sort.Slice(runes, func(i, j int) bool {
 			return runes[i] < runes[j]

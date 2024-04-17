@@ -1,19 +1,47 @@
-package goProblems
+package leetcodeProblems
 
-// Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].
-// You may return the answer in any order.
+/*
+	@lc app=leetcode id=77 lang=golang
 
-// Example 1:
+	[77] Combinations
 
-// Input: n = 4, k = 2
-// Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
-// Explanation: There are 4 choose 2 = 6 total combinations.
-// Note that combinations are unordered, i.e., [1,2] and [2,1] are considered to be the same combination.
-// Example 2:
+	https://leetcode.com/problems/combinations/description/
 
-// Input: n = 1, k = 1
-// Output: [[1]]
-// Explanation: There is 1 choose 1 = 1 total combination.
+	algorithms
+	Medium (70.31%)
+	Likes:    8113
+	Dislikes: 218
+	Total Accepted:    885.7K
+	Total Submissions: 1.3M
+	Testcase Example:  '4\n2'
+
+	Given two integers n and k, return all possible combinations of k numbers
+	chosen from the range [1, n].
+
+	You may return the answer in any order.
+
+	Example 1:
+		Input: n = 4, k = 2
+		Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+		Explanation: There are 4 choose 2 = 6 total combinations.
+		Note that combinations are unordered, i.e., [1,2] and [2,1] are considered
+		to be the same combination.
+	Example 2:
+		Input: n = 1, k = 1
+		Output: [[1]]
+		Explanation: There is 1 choose 1 = 1 total combination.
+*/
+
+/*
+Accepted
+27/27 cases passed (129 ms)
+Your runtime beats 84.22 % of golang submissions
+Your memory usage beats 74.95 % of golang submissions (53.7 MB)
+*/
+
+func (h *LCHandler) BacktrackCombinations(n int, k int) [][]int {
+	return backtrackCombinations(n, k)
+}
 
 // algorithm suggested by gpt. looking at the results on leetcode submissions this seems to line up pretty
 // well with what other people came up with (or asked gpt to come up with)
@@ -35,11 +63,14 @@ package goProblems
 //		 to the combination, allowing you to try other candidates for that position.
 // Return Result: After exploring all possible combinations, return the list of combinations as the final result.
 
-// By following these steps, you can efficiently generate all possible combinations of k numbers chosen from the range [1, n].
-//
-//	This approach ensures that you avoid generating duplicate combinations and that you explore only the branches of
+// This approach ensures that you avoid generating duplicate combinations and that you explore only the branches of
 //	 the search tree that can lead to valid solutions.
-func (h *Handler) backtrackCombinations(n int, k int) (string, [][]int) {
+
+// @lc code=start
+// NOTE this problem has too generic a name, will need to renamed
+// to run uncomment below line and comment line 42
+// func combine(n int, k int) [][]int {
+func backtrackCombinations(n int, k int) [][]int {
 	// final array of results
 	results := [][]int{}
 	currentCombos := []int{}
@@ -56,7 +87,7 @@ func (h *Handler) backtrackCombinations(n int, k int) (string, [][]int) {
 		}
 
 		// for each position, iterate 1-n adding unused numbers to the result set
-		for i := start; n > i; i++ {
+		for i := start; i <= n; i++ {
 			// add to the combos array
 			currentCombos = append(currentCombos, i)
 			// recurse
@@ -67,5 +98,7 @@ func (h *Handler) backtrackCombinations(n int, k int) (string, [][]int) {
 	}
 
 	backtrack(1)
-	return "", results
+	return results
 }
+
+// @lc code=end

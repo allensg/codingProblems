@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"os"
 
-	goProblems "github.com/allensg/codingProblems/problems/goProblems"
+	emailProblems "github.com/allensg/codingProblems/problems/goProblems/emailProblems"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
@@ -21,7 +21,7 @@ func main() {
 	envVars := make(map[string]string)
 
 	// Initialize handler
-	problems := &goProblems.Handler{
+	problems := &emailProblems.Handler{
 		Env: envVars,
 	}
 
@@ -29,7 +29,7 @@ func main() {
 		problems.Logger = c
 		// return c.HTML(http.StatusOK, "Hello, Docker! <3")
 		// input := []int{3, 5, 13, 14, 5, 12}
-		returnString := problems.LetterCombinations("23")
+		returnString, _ := problems.CountInvalidParens("[}")
 		c.HTML(http.StatusOK, returnString)
 		return nil
 	})

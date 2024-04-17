@@ -46,11 +46,14 @@ Accepted
 	Your memory usage beats 64.95 % of golang submissions (7.9 MB)
 */
 func (h *LCHandler) MaxProfit(prices []int) int {
-	return maxProfit(prices)
+	return maxProfitPart1(prices)
 }
 
 // @lc code=start
-func maxProfit(prices []int) int {
+// NOTE this problem has a followup, will need to rename
+// to run uncomment below line and comment line 55
+// func maxProfit(prices []int) int {
+func maxProfitPart1(prices []int) int {
 	// traversing the array backwards keeps it at O(n)
 	currentHighest := 0
 	maxProfit := 0

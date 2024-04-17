@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -41,10 +42,10 @@ func (h *Helpers) CreateNode() (node Node) {
 
 func (h *Helpers) AreLinkedListsEqual(a LinkedList, b LinkedList) (equal bool) {
 	strA, strB := a.DisplayString(), b.DisplayString()
-	if strA != strB {
-		return false
+	if strA == strB {
+		return true
 	}
-	return true
+	return false
 }
 
 func (h *Helpers) IntArrToLinkedList(input []int) (list LinkedList) {
@@ -129,4 +130,12 @@ func (h *Helpers) FindMinIntNodeArrIndex(input []Node) int {
 	}
 
 	return minIndex
+}
+
+func (h *Helpers) SortString(str string) string {
+	runes := []rune(str)
+	sort.Slice(runes, func(i, j int) bool {
+		return runes[i] < runes[j]
+	})
+	return string(runes)
 }

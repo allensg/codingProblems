@@ -1,1 +1,2 @@
-A set of problems from Daily Interview Pro https://www.techseries.dev/daily. Spent some time using this for interview prep a while back
+A set of problems from Daily Interview Pro https://www.techseries.dev/daily. Spent some time using this for interview prep a while back.
+There are a lot of these that aren't done, and might be some overlap with the leetcode problems.

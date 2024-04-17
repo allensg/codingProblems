@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/allensg/codingProblems/problems/goProblems"
+	emailProblems "github.com/allensg/codingProblems/problems/goProblems/emailProblems"
 )
 
 func TestStaircase(t *testing.T) {
@@ -12,7 +12,7 @@ func TestStaircase(t *testing.T) {
 	// we should see: 0 | 1 | 1 | 2 | 3 | 5 | 8 | 13 | 21 | 34 | 55 | 89 | 144 | 233 | 377 |...
 
 	// Initialize handler
-	problems := &goProblems.Handler{}
+	problems := &emailProblems.Handler{}
 	var tests = []struct {
 		input int
 		ans   int

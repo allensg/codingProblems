@@ -5,12 +5,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/allensg/codingProblems/problems/goProblems"
+	emailProblems "github.com/allensg/codingProblems/problems/goProblems/emailProblems"
 )
 
 func TestBuddyStrings(t *testing.T) {
 	// Initialize handler
-	problems := &goProblems.Handler{}
+	problems := &emailProblems.Handler{}
 
 	var tests = []struct {
 		input  []string

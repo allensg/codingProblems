@@ -6,10 +6,10 @@ import (
 	"testing"
 
 	"github.com/allensg/codingProblems/helpers"
-	"github.com/allensg/codingProblems/problems/goProblems"
+	emailProblems "github.com/allensg/codingProblems/problems/goProblems/emailProblems"
 )
 
-var problem = &goProblems.Handler{}
+var problem = &emailProblems.Handler{}
 var helper = &helpers.Helpers{}
 
 func TestSortLinkedLists(t *testing.T) {

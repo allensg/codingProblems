@@ -5,12 +5,12 @@ import (
 	"testing"
 
 	"github.com/allensg/codingProblems/helpers"
-	"github.com/allensg/codingProblems/problems/goProblems"
+	emailProblems "github.com/allensg/codingProblems/problems/goProblems/emailProblems"
 )
 
 func TestMoveZeross(t *testing.T) {
 	// Initialize handler
-	problems, helper := &goProblems.Handler{}, &helpers.Helpers{}
+	problems, helper := &emailProblems.Handler{}, &helpers.Helpers{}
 
 	var tests = []struct {
 		input  []int

@@ -1,18 +1,61 @@
-package goProblems
+package leetcodeProblems
 
-// The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+/*
+	@lc app=leetcode id=6 lang=golang
 
-// P   A   H   N
-// A P L S I I G
-// Y   I   R
-// And then read line by line: "PAHNAPLSIIGYIR"
+	[6] Zigzag Conversion
 
-// Write the code that will take a string and make this conversion given a number of rows:
-func (h *Handler) ZigZagConversion(str string, lines int) (returnString string, answer string) {
-	ZigZag := StringToZigZag(str, lines)
+	https://leetcode.com/problems/zigzag-conversion/description/
+
+	algorithms
+	Medium (47.80%)
+	Likes:    7435
+	Dislikes: 14364
+	Total Accepted:    1.3M
+	Total Submissions: 2.7M
+	Testcase Example:  '"PAYPALISHIRING"\n3'
+
+	The string "PAYPALISHIRING" is written in a zigzag pattern on a given number
+	of rows like this: (you may want to display this pattern in a fixed font for
+	better legibility)
+
+	P   A   H   N
+	A P L S I I G
+	Y   I   R
+
+	And then read line by line: "PAHNAPLSIIGYIR"
+	Write the code that will take a string and make this conversion given a
+	number of rows:
+	string convert(string s, int numRows);
+
+	Example 1:
+		Input: s = "PAYPALISHIRING", numRows = 3
+		Output: "PAHNAPLSIIGYIR"
+	Example 2:
+		Input: s = "PAYPALISHIRING", numRows = 4
+		Output: "PINALSIGYAHRPI"
+		Explanation:
+		P     I    N
+		A   L S  I G
+		Y A   H R
+		P     I
+	Example 3:
+		Input: s = "A", numRows = 1
+		Output: "A"
+
+*/
+
+func (h *LCHandler) ZigZagConversion(s string, numRows int) string {
+	return convert(s, numRows)
+}
+
+// @lc code=start
+// TODO
+func convert(s string, numRows int) string {
+	ZigZag := StringToZigZag(s, numRows)
 	scrambledString := ZigZagToString(ZigZag)
 
-	return "", scrambledString
+	return scrambledString
 }
 
 // takes in a string and stores it in columns like so
@@ -56,3 +99,5 @@ func StringToZigZag(str string, lines int) *[][]rune {
 func ZigZagToString(*[][]rune) string {
 	return ""
 }
+
+// @lc code=end

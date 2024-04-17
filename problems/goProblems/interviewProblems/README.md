@@ -1,0 +1,1 @@
+A space for takehome problems from various interviews i've done over the years. 

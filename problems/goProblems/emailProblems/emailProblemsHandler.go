@@ -5,7 +5,7 @@ import (
 )
 
 type (
-	// Handler contains reference to whatever I need across problems
+	// Handler contains reference to whatever I need across email
 	Handler struct {
 		Env    map[string]string
 		Logger echo.Context

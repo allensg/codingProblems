@@ -43,6 +43,12 @@ import (
 		Input: n = 2
 		Output: false
 */
+/*
+Accepted
+420/420 cases passed (4 ms)
+Your runtime beats 34.8 % of golang submissions
+Your memory usage beats 5.1 % of golang submissions (2.7 MB)
+*/
 
 func (h *LCHandler) IsHappyNumber(n int) bool {
 	return isHappy(n)
@@ -60,7 +66,6 @@ func isHappy(n int) bool {
 
 	currentNum := n
 	for true {
-
 		_, found := hitMap[currentNum]
 		// if we find a value we've already hit we're in a loop and should exit the program
 		if found {

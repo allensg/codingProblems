@@ -30,6 +30,12 @@ package leetcodeProblems
 		Input: s = "axc", t = "ahbgdc"
 		Output: false
 */
+/*
+Accepted
+20/20 cases passed (1 ms)
+Your runtime beats 84.13 % of golang submissions
+Your memory usage beats 36.58 % of golang submissions (2.3 MB)
+*/
 
 func (h *LCHandler) isSubsequence(s string, t string) bool {
 	return isSubsequence(s, t)

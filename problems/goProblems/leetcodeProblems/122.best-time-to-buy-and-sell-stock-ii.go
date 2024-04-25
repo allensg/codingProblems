@@ -42,6 +42,12 @@ package leetcodeProblems
 		Explanation: There is no way to make a positive profit, so we never buy the
 		stock to achieve the maximum profit of 0.
 */
+/*
+Accepted
+200/200 cases passed (5 ms)
+Your runtime beats 47.79 % of golang submissions
+Your memory usage beats 8.78 % of golang submissions (3.4 MB)
+*/
 
 func (h *LCHandler) MaxProfitPt2(prices []int) int {
 	return maxProfit2(prices)
@@ -52,7 +58,17 @@ func (h *LCHandler) MaxProfitPt2(prices []int) int {
 // to run uncomment below line and comment line 54
 // func maxProfit(prices []int) int {
 func maxProfit2(prices []int) int {
-	return 0
+	// initial thoughs for this was to determine some kind of average with preprocessing
+	// then with high and low use that average to that to determine sales on a per iteration basis
+	// when that didn't work i found this and it works great with a simple lookback.
+	maxProfit := 0
+	for i := 1; i < len(prices); i++ {
+		if prices[i] > prices[i-1] {
+			maxProfit += prices[i] - prices[i-1]
+		}
+	}
+
+	return maxProfit
 }
 
 // @lc code=end

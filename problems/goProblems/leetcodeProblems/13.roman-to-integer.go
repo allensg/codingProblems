@@ -57,7 +57,12 @@ package leetcodeProblems
 		Output: 1994
 		Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 */
-
+/*
+Accepted
+3999/3999 cases passed (28 ms)
+Your runtime beats 5.77 % of golang submissions
+Your memory usage beats 8.24 % of golang submissions (4.1 MB)
+*/
 func (h *LCHandler) RomanToInt(s string) int {
 	return romanToInt(s)
 }
@@ -65,8 +70,59 @@ func (h *LCHandler) RomanToInt(s string) int {
 // @lc code=start
 func romanToInt(s string) int {
 
-	return 0
+	valueMap := map[rune]int{
+		'I': 1,
+		'V': 5,
+		'X': 10,
+		'L': 50,
+		'C': 100,
+		'D': 500,
+		'M': 1000,
+	}
 
+	sum := valueMap[rune(s[0])]
+
+	for index := 1; index < len(s); index++ {
+		currentRune := rune(s[index])
+		currentInt := valueMap[currentRune]
+
+		// check to see if you need to add or subtract
+		previousRune := rune(s[index-1])
+		subtract := needsSubtraction(currentRune, previousRune)
+
+		// if so add current (IV) and the previous (I), then subtract the previous (I)
+		// (as we will have already added previous to the sum in the last iteration)
+		if subtract {
+			previousInt := valueMap[previousRune]
+			toAdd := currentInt - previousInt
+			sum = (sum - previousInt) + toAdd
+		} else {
+			sum = sum + currentInt
+		}
+
+	}
+
+	return sum
+}
+
+// I can be placed before V (5) and X (10) to make 4 and 9.
+// X can be placed before L (50) and C (100) to make 40 and 90.
+// C can be placed before D (500) and M (1000) to make 400 and 900.
+// takes in the current numeral and the previous one to determine if we need to subtract
+func needsSubtraction(current, previous rune) bool {
+	if (current == 'V' || current == 'X') && previous == 'I' {
+		return true
+	}
+
+	if (current == 'L' || current == 'C') && previous == 'X' {
+		return true
+	}
+
+	if (current == 'D' || current == 'M') && previous == 'C' {
+		return true
+	}
+
+	return false
 }
 
 // @lc code=end

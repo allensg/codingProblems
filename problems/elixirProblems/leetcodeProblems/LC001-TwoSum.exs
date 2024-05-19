@@ -3,8 +3,9 @@
 # You can return the answer in any order.
 
 defmodule Solution do
-  @spec two_sum(nums :: [integer], target :: integer) :: [integer]
-  def two_sum(nums, target) do
-    
-  end
+  # @spec two_sum(nums :: [integer], target :: integer) :: [integer]
+  # def two_sum(nums, target) do
+    hello = "hello"
+    IO.puts(hello)
+  # end
 end

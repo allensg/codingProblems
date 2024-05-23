@@ -53,16 +53,27 @@ func (h *LCHandler) HasPathSum(root *TreeNode, targetSum int) bool {
  */
 
 func hasPathSum(root *TreeNode, targetSum int) bool {
+	var checkSum func(node *TreeNode, currentSum int) bool
+	checkSum = func(node *TreeNode, currentSum int) bool {
+		if node == nil {
+			// When node is nil, just return false
+			return false
+		}
 
-	if root == nil {
-		return false
+		// Update the current sum by adding the node's value
+		currentSum += node.Val
+
+		// Check if the current node is a leaf and if current sum equals target sum
+		if node.Left == nil && node.Right == nil {
+			return currentSum == targetSum
+		}
+
+		// Recursively check left and right subtrees
+		return checkSum(node.Left, currentSum) || checkSum(node.Right, currentSum)
 	}
 
-	if root.Left == nil && root.Right == nil {
-		return root.Val == targetSum
-	}
-
-	return hasPathSum(root.Left, targetSum-root.Val) || hasPathSum(root.Right, targetSum-root.Val)
+	// Initial call should start with the root and initial sum as 0
+	return checkSum(root, 0)
 }
 
 // @lc code=end

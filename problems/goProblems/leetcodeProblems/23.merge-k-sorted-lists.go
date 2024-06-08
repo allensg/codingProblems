@@ -72,15 +72,11 @@ func mergeKLists(lists []*ListNode) *ListNode {
 		if !hasNodes {
 			minIndex = -1
 		}
-		fmt.Println("hasnodes")
+
 		return minIndex
 	}
 
-	loopCount := 0
 	for true {
-		fmt.Println("==============================================")
-		fmt.Printf("loopcount: %d\n", loopCount)
-		loopCount += 1
 		// get the index of the min value
 		toAddIndex := minHead(lists)
 		fmt.Printf("toAddIndex %d\n", toAddIndex)
@@ -93,10 +89,10 @@ func mergeKLists(lists []*ListNode) *ListNode {
 		toAdd := lists[toAddIndex]
 
 		baseNode.Val = toAdd.Val
-		fmt.Printf("updated basenode value to: %d\n", baseNode.Val)
-		// update the base node
-		if len(processedMap) <= len(lists)-1 {
-			fmt.Println("added basenode.next\n")
+
+		// if there are still elements to process
+		if len(processedMap) < len(lists) {
+			// update the base node
 			baseNode.Next = &ListNode{}
 			baseNode = baseNode.Next
 		}

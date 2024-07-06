@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	s, err := warehouse.NewServerFromFile("warehouse_pings.csv") 
+	s, err := warehouse.NewServerFromFile("warehouse_pings.csv")
 	if err != nil {
 		fmt.Printf("Failed to create warehouse server: %v\n", err)
 		os.Exit(1)

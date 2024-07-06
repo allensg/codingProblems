@@ -1,3 +1,5 @@
+package leetcodeProblems
+
 /*
 	@lc app=leetcode id=979 lang=golang
 
@@ -38,15 +40,15 @@
 */
 
 // @lc code=start
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+func (h *LCHandler) DistributeCoins(root *TreeNode) int {
+	return distributeCoins(root)
 }
 
 func distributeCoins(root *TreeNode) int {
-
+	moves := 0
+	moves = moves + processNodes(root.Left, root)
+	moves = moves + processNodes(root.Right, root)
+	return moves
 }
 
 // @lc code=end
-

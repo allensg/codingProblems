@@ -86,3 +86,51 @@ func (s *IntStack) Pop() (int, bool) {
 func (s IntStack) IsEmpty() bool {
 	return len(s) == 0
 }
+
+// different graph representation types
+type GraphNode struct {
+	Value     int
+	Neighbors []*GraphNode
+}
+
+/*
+ 	a := &Node{Value: "A"}
+    b := &Node{Value: "B"}
+    c := &Node{Value: "C"}
+    d := &Node{Value: "D"}
+
+    a.Adjacent = []*Node{b, c}
+    b.Adjacent = []*Node{a, d}
+    c.Adjacent = []*Node{a, d}
+    d.Adjacent = []*Node{b, c}
+
+    graph := []*Node{a, b, c, d}
+*/
+
+type AdjacencyMatrix struct {
+	Matrix [][]bool
+}
+
+/*
+matrix := [][]bool{
+        {false, true, true, false},
+        {true, false, false, true},
+        {true, false, false, true},
+        {false, true, true, false},
+    }
+*/
+
+type AdjacencyList struct {
+	List map[string][]string
+}
+
+/*
+list := AdjacencyList{
+		"A": {"B", "C"},
+		"B": {"D", "E"},
+		"C": {"F"},
+		"D": {},
+		"E": {"F"},
+		"F": {},
+	}
+*/

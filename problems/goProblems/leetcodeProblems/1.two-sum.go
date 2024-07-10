@@ -41,7 +41,22 @@ func (h *LCHandler) TwoSum(nums []int, target int) []int {
 
 // @lc code=start
 func twoSum(nums []int, target int) []int {
-	return []int{}
+	toReturn := []int{}
+
+	for topIndex, topValue := range nums {
+
+		for subIndex := topIndex + 1; subIndex < len(nums); subIndex++ {
+			toCheck := topValue + nums[subIndex]
+			// fmt.Printf("top: %d, sub: %d , tocheck: %d\n", topIndex, subIndex, toCheck)
+			if toCheck == target {
+				toReturn = append(toReturn, topIndex)
+				toReturn = append(toReturn, subIndex)
+				return toReturn
+			}
+		}
+	}
+
+	return toReturn
 }
 
 // @lc code=end

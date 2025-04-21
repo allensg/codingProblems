@@ -13,7 +13,7 @@ RUN go mod download
 # https://docs.docker.com/engine/reference/builder/#copy
 COPY *.go ./
 COPY ./problems ./problems
-COPY ./tests ./tests
+#COPY ./tests ./tests
 COPY ./helpers ./helpers
 
 # Build
